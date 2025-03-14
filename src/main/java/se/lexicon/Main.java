@@ -6,6 +6,26 @@ public class Main {
     }
 }
 
+//
+// 1. Display login menu
+// 2. After login in: Display bank account money
+// 3. Display menu options along with 2.
+//    ## Add money
+//    ## Withdraw money
+//    ## Acc info
+// 4. Account transactions operations
+//    ## add
+//    ## withdraw
+// 5. Display Account info
+// 5.1 Display Account operations
+//    ## Change
+// 6. Change account info operations
+//    ##
+// 7. Login in operation
+//logout
+// Admin stuff such as listing all account holders
+
+
 //Idea
 
 //How should I start if I want a web page to connect to java backend later?
