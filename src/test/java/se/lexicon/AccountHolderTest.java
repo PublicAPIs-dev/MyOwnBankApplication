@@ -9,7 +9,7 @@ public class AccountHolderTest {
     public void testGetNameSuccess(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
 
         // Expected
         String expected = "Dennis Olsen";
@@ -27,7 +27,7 @@ public class AccountHolderTest {
     public void testSetNameSuccessRightPassword(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
         String newName = "Johan Olsen";
 
         // Expected
@@ -46,7 +46,7 @@ public class AccountHolderTest {
     public void testSetNameFailureWrongPassword(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
         String newName = "Johan Olsen";
 
         // Expected
@@ -67,7 +67,7 @@ public class AccountHolderTest {
     public void testGetAccountIdSuccess(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
 
 
         // Expected maximum value is 5
@@ -84,7 +84,7 @@ public class AccountHolderTest {
     public void testGetBalanceSuccess(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
 
         // Expected
         double expected = 10000;
@@ -100,7 +100,7 @@ public class AccountHolderTest {
     public void testSetBalanceSuccess(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
 
         // Expected
         double expected = 90;
@@ -115,26 +115,42 @@ public class AccountHolderTest {
 
     // Get/set Password
     @Test
-    public void testGetPasswordSuccess(){
+    public void testGetPasswordSuccessRightPasswordId(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
 
         // Expected
         String expected = "123456";
 
         // Actual
-        String actual = person.getPassword();
+        String actual = person.getPassword("1");
+
+        // Verify the result
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetPasswordFailureWrongPasswordId(){
+        // Test logic here
+        // Scenario:
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
+
+        // Expected
+        String expected = null;
+
+        // Actual
+        String actual = person.getPassword("12423");
 
         // Verify the result
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
     public void testSetPasswordSuccessRightCurrentPassword(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
         String oldPassword = "123456";
         String newPassword = "987123";
 
@@ -147,13 +163,13 @@ public class AccountHolderTest {
 
         // Verify the result
         Assertions.assertEquals(expectedReturn, actualReturn);
-        Assertions.assertEquals(expectedPassword, person.getPassword());
+        Assertions.assertEquals(expectedPassword, person.getPassword("1"));
     }
     @Test
     public void testSetPasswordFailureWrongCurrentPassword(){
         // Test logic here
         // Scenario:
-        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000);
+        AccountHolder person = new AccountHolder("Dennis Olsen", "123456", 10000, "1");
         String oldPassword = "765464";
         String newPassword = "987123";
 
@@ -166,7 +182,7 @@ public class AccountHolderTest {
 
         // Verify the result
         Assertions.assertEquals(expectedReturn, actualReturn);
-        Assertions.assertEquals(expectedPassword, person.getPassword());
+        Assertions.assertEquals(expectedPassword, person.getPassword("1"));
     }
 
 }
